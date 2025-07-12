@@ -1,0 +1,578 @@
+{
+  "name": "VhiWEB ",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "Auth",
+      "filename": "Auth",
+      "seq": 1,
+      "root": {
+        "meta": {
+          "name": "Auth",
+          "seq": 1
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Login",
+          "filename": "Login.bru",
+          "seq": 1,
+          "request": {
+            "url": "{{apiLocal}}auth/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\" : \"admin\",\n  \"password\" : \"123456\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Register",
+          "filename": "Register.bru",
+          "seq": 2,
+          "request": {
+            "url": "{{apiLocal}}auth/register",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"vendor_2\",\n  \"password\": \"12345678\",\n  \"password_confirmation\": \"12345678\",\n  \"type\": \"CV\",\n  \"address\": \"Jalan Buntu 1\",\n  \"phone\": \"08129124123\",\n  \"email\": \"vendor2@gmail.com\",\n  \"name\": \"Vendor Ceria 2\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Product Catalog",
+      "filename": "Product Catalog",
+      "seq": 3,
+      "root": {
+        "meta": {
+          "name": "Product Catalog",
+          "seq": 3
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Store",
+          "filename": "Store.bru",
+          "seq": 1,
+          "request": {
+            "url": "{{apiLocal}}product",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "multipartForm",
+              "formUrlEncoded": [],
+              "multipartForm": [
+                {
+                  "type": "text",
+                  "name": "name",
+                  "value": "product 1",
+                  "enabled": true
+                },
+                {
+                  "type": "text",
+                  "name": "price",
+                  "value": "1000",
+                  "enabled": true
+                },
+                {
+                  "type": "text",
+                  "name": "quantity",
+                  "value": "5",
+                  "enabled": true
+                },
+                {
+                  "type": "file",
+                  "name": "files[0]",
+                  "value": [
+                    "C:\\Users\\Fatchur Rosi\\OneDrive\\Pictures\\Camera Roll\\WIN_20240716_11_56_53_Pro.jpg"
+                  ],
+                  "enabled": true
+                },
+                {
+                  "type": "file",
+                  "name": "files[1]",
+                  "value": [
+                    "C:\\Users\\Fatchur Rosi\\OneDrive\\Pictures\\Camera Roll\\lihat ujian.png"
+                  ],
+                  "enabled": true
+                }
+              ],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "2|MwlFqIgJYL37lr6hMSrUcVzmVDrFHku5gPG8Leaw195ff415"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Index",
+          "filename": "Index.bru",
+          "seq": 2,
+          "request": {
+            "url": "{{apiLocal}}product",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{vendor_token}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete",
+          "filename": "Delete.bru",
+          "seq": 3,
+          "request": {
+            "url": "{{apiLocal}}product/1",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{vendor_token}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Show",
+          "filename": "Show.bru",
+          "seq": 4,
+          "request": {
+            "url": "{{apiLocal}}product/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{vendor_token}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update",
+          "filename": "Update.bru",
+          "seq": 5,
+          "request": {
+            "url": "{{apiLocal}}product/1",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "multipartForm",
+              "formUrlEncoded": [],
+              "multipartForm": [
+                {
+                  "type": "text",
+                  "name": "name",
+                  "value": "Produk Updated",
+                  "enabled": true
+                },
+                {
+                  "type": "text",
+                  "name": "price",
+                  "value": "1000",
+                  "enabled": true
+                },
+                {
+                  "type": "text",
+                  "name": "quantity",
+                  "value": "5",
+                  "enabled": true
+                },
+                {
+                  "type": "file",
+                  "name": "files[0]",
+                  "value": [
+                    "C:\\Users\\Fatchur Rosi\\OneDrive\\Pictures\\Camera Roll\\lihat ujian.png"
+                  ],
+                  "enabled": true
+                },
+                {
+                  "type": "file",
+                  "name": "files[1]",
+                  "value": [
+                    "C:\\Users\\Fatchur Rosi\\OneDrive\\Pictures\\Camera Roll\\WIN_20240716_11_56_53_Pro.jpg"
+                  ],
+                  "enabled": true
+                }
+              ],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{vendor_token}}"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Vendor",
+      "filename": "Vendor",
+      "seq": 2,
+      "root": {
+        "meta": {
+          "name": "Vendor",
+          "seq": 2
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Delete",
+          "filename": "Delete.bru",
+          "seq": 4,
+          "request": {
+            "url": "{{apiLocal}}vendor/4",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "3|q5evZhHA41BNCDJRv7w4wlvF1dahzNV6lL6YT0p3f5b699c6"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Index",
+          "filename": "Index.bru",
+          "seq": 5,
+          "request": {
+            "url": "{{apiLocal}}vendor?search=vendor&order_by=desc&sort_by=name",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "search",
+                "value": "vendor",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "order_by",
+                "value": "desc",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "sort_by",
+                "value": "name",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "3|q5evZhHA41BNCDJRv7w4wlvF1dahzNV6lL6YT0p3f5b699c6"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Show",
+          "filename": "Show.bru",
+          "seq": 6,
+          "request": {
+            "url": "{{apiLocal}}vendor/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "3|q5evZhHA41BNCDJRv7w4wlvF1dahzNV6lL6YT0p3f5b699c6"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Store",
+          "filename": "Store.bru",
+          "seq": 2,
+          "request": {
+            "url": "{{apiLocal}}vendor",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"vendor_2\",\n  \"password\": \"12345678\",\n  \"password_confirmation\": \"12345678\",\n  \"type\": \"CV\",\n  \"address\": \"Jalan Buntu 2\",\n  \"phone\": \"08129124123\",\n  \"email\": \"vendor2@gmail.com\",\n  \"name\": \"Vendor Ceria Banget\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "1|itkKBqMJDbdvHCNbLc77NJFvkuRVKemLTnO16CRea1da8ad6"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update",
+          "filename": "Update.bru",
+          "seq": 3,
+          "request": {
+            "url": "{{apiLocal}}vendor/2",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"vendor_2\",\n  \"password\": \"12345678\",\n  \"password_confirmation\": \"12345678\",\n  \"type\": \"CV\",\n  \"address\": \"Jalan Buntu 3\",\n  \"phone\": \"08129124123\",\n  \"email\": \"vendor2@gmail.com\",\n  \"name\": \"Vendor Ceria Banget\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "3|q5evZhHA41BNCDJRv7w4wlvF1dahzNV6lL6YT0p3f5b699c6"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Vendor Verification",
+          "filename": "Vendor Verification.bru",
+          "seq": 1,
+          "request": {
+            "url": "{{apiLocal}}vendor/verification/1",
+            "method": "PATCH",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "3|PsAQKH8PiAkudOBJjqbUkjilwBo5GVE4yY6rRzczfb7318ac"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "http",
+      "name": "test img",
+      "filename": "test img.bru",
+      "seq": 4,
+      "request": {
+        "url": "http://127.0.0.1:8000/api/image/eyJpdiI6IlF3OXFPKzRPWVhDcTVQelZNTWNZTHc9PSIsInZhbHVlIjoiNzlTeUtXMU5RUGFHM2FIcnVvRWlPS2xhalRTL2pFajU4ZVdCcUlGa0p3Yz0iLCJtYWMiOiJlMmEwMjRiZmY1OWI3YTQ2NDkxOGMwOGQxZTZjZjNmZGI5ZjNlNTJjNGM3MDc3OTA0NmNhM2M3NTZiZGQ0NjBmIiwidGFnIjoiIn0=",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    }
+  ],
+  "activeEnvironmentUid": "AjIIpdfAgmy0QR5iUy9k5",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "apiLocal",
+          "value": "http://127.0.0.1:8000/api/",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "admin_token",
+          "value": "",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        },
+        {
+          "name": "vendor_token",
+          "value": "",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "VhiWeb"
+    }
+  ],
+  "brunoConfig": {
+    "version": "1",
+    "name": "VhiWEB ",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0024261474609375,
+    "filesCount": 11
+  }
+}
